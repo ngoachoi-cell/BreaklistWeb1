@@ -4,7 +4,7 @@ WORKDIR /app
 EXPOSE 8080
 
 # Install EPPlus license (non-commercial)
-ENV EPPLUS_LICENSE_NONCOMMERCIAL=your-name
+ENV EPPLUS_LICENSE_NONCOMMERCIAL=Achoi-Ngo
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
@@ -20,4 +20,5 @@ RUN dotnet publish "BreaklistWeb.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
 ENTRYPOINT ["dotnet", "BreaklistWeb.dll"]
